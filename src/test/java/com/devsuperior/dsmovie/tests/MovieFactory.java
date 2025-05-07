@@ -14,4 +14,9 @@ public class MovieFactory {
 		MovieEntity movie = createMovieEntity();
 		return new MovieDTO(movie);
 	}
+	
+	public static MovieEntity createCustomMovieEntity(Long id) {
+		MovieEntity movie = new MovieEntity(id, "Test Movie", 0.0, 0, "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg");
+		return movie;
+	}
 }

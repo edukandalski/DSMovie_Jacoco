@@ -25,4 +25,20 @@ public class ScoreFactory {
 		ScoreEntity score = createScoreEntity();
 		return new ScoreDTO(score.getId().getMovie().getId(), score.getValue());
 	}
+	
+	public static ScoreEntity createCustomScoreEntity(Long movieId) {
+		MovieEntity movie = MovieFactory.createCustomMovieEntity(movieId);
+		UserEntity user = UserFactory.createUserEntity();
+		ScoreEntity score = new ScoreEntity();
+		
+		score.setMovie(movie);
+		score.setUser(user);
+		score.setValue(scoreValue);
+		movie.getScores().add(score);
+		return score;
+	}
+	
+	public static ScoreDTO createCustomScoreDTO(ScoreEntity entity) {
+		return new ScoreDTO(entity.getId().getMovie().getId(), entity.getValue());
+	}
 }
